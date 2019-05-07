@@ -8,5 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "puppeteer": "^1.15.0",
+    "response": "^0.18.0",
+    "yargs": "^13.2.2"
+  }
 }
