@@ -1,7 +1,8 @@
-const data = require('./lib/data');
-const Response = require('./lib/response');
+const sites = require('./lib/sites')
+const Response = require('./lib/response')
 
-data.urls.forEach(url => {
-    let site = new Response(url)
-    site.handleResponse()
+sites.forEach(site => {
+    const { url } = site
+    let siteResponse = new Response(url)
+    siteResponse.handleResponse()
 })
