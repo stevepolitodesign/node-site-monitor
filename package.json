@@ -4,12 +4,13 @@
   "description": "A simple website monitor built in Node. Receive an email notification when your website is down. Also creates an archive of screenshots.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "lowdb": "^1.0.0",
+    "nock": "^10.0.6",
     "puppeteer": "^1.15.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
