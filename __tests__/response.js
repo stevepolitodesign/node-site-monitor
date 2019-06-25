@@ -10,7 +10,7 @@ describe("Response class", () => {
       }).toThrow();
     });
 
-    test("should return a status code", async () => {
+    it("should return a status code", async () => {
       const scope = nock("http://www.google.com")
         .get("/")
         .reply(200);
@@ -18,6 +18,15 @@ describe("Response class", () => {
       const status = await response.getResponse();
       expect(status).toBe(200);
     });
+  });
+
+  describe("handleResponse", () => {
+    test.todo("should call getResponse once");
+    test.todo("should call updateData once");
+    test.todo(
+      "should return the response if no email was passed to Response class"
+    );
+    test.todo("should create a new instance of the Email class per email");
   });
 
   describe("get status", () => {
