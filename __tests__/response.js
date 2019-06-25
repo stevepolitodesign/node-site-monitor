@@ -1,3 +1,7 @@
+const nock = require("nock");
+const scope = nock("http://www.google.com")
+  .get("/")
+  .reply(200);
 const Response = require("../lib/response");
 
 describe("Response class", () => {
@@ -9,7 +13,11 @@ describe("Response class", () => {
       }).toThrow();
     });
 
-    test.todo("should return a status code");
+    test("should return a status code", async () => {
+      const response = new Response("http://www.google.com");
+      const status = await response.getResponse();
+      expect(status).toBe(200);
+    });
   });
 
   describe("get status", () => {
