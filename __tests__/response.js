@@ -2,7 +2,7 @@ const Response = require("../lib/response");
 
 describe("Response class", () => {
   describe("getResponse", () => {
-    test("should throw an error if there is no url", () => {
+    it("should throw an error if there is no url", () => {
       const response = new Response();
       expect(() => {
         response.getResponse();
@@ -13,7 +13,7 @@ describe("Response class", () => {
   });
 
   describe("get status", () => {
-    test("should return status", () => {
+    it("should return status", () => {
       const response = new Response();
       const spy = jest.spyOn(response, "status", "get");
       response.status = 200;
@@ -25,7 +25,7 @@ describe("Response class", () => {
   });
 
   describe("set status", () => {
-    test("should set status to UP if it's between 199 and 400", () => {
+    it("should set status to UP if it's between 199 and 400", () => {
       const response = new Response();
       const spy = jest.spyOn(response, "status", "set");
       response.status = 200;
@@ -33,7 +33,7 @@ describe("Response class", () => {
       expect(response.status).toBe("UP");
       spy.mockRestore();
     });
-    test("should set status to DOWN if it's greater than 399", () => {
+    it("should set status to DOWN if it's greater than 399", () => {
       const response = new Response();
       const spy = jest.spyOn(response, "status", "set");
       response.status = 400;
@@ -44,7 +44,7 @@ describe("Response class", () => {
   });
 
   describe("get statusCode", () => {
-    test("should return statusCode", () => {
+    it("should return statusCode", () => {
       const response = new Response();
       const spy = jest.spyOn(response, "statusCode", "get");
       response.statusCode = 200;
@@ -56,7 +56,7 @@ describe("Response class", () => {
   });
 
   describe("set statusCode", () => {
-    test("should set statusCode if there is an argument", () => {
+    it("should set statusCode if there is an argument", () => {
       const response = new Response();
       const spy = jest.spyOn(response, "statusCode", "set");
       response.statusCode = 200;
@@ -67,7 +67,7 @@ describe("Response class", () => {
   });
 
   describe("get lastChecked", () => {
-    test("should return lastChecked", () => {
+    it("should return lastChecked", () => {
       const response = new Response();
       const spy = jest.spyOn(response, "lastChecked", "get");
       const timestamp = Date.now();
@@ -80,7 +80,7 @@ describe("Response class", () => {
   });
 
   describe("set lastChecked", () => {
-    test("should set lastChecked", () => {
+    it("should set lastChecked", () => {
       const response = new Response();
       const spy = jest.spyOn(response, "lastChecked", "set");
       const timestamp = Date.now();
