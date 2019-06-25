@@ -11,6 +11,37 @@ describe("getResponse", () => {
   test.todo("should return a status code");
 });
 
+describe("get status", () => {
+  test("should return status", () => {
+    const response = new Response();
+    const spy = jest.spyOn(response, "status", "get");
+    response.status = 200;
+    const status = response.status;
+    expect(spy).toHaveBeenCalled();
+    expect(status).toBe("UP");
+    spy.mockRestore();
+  });
+});
+
+describe("set status", () => {
+  test("should set status to UP if it's between 199 and 400", () => {
+    const response = new Response();
+    const spy = jest.spyOn(response, "status", "set");
+    response.status = 200;
+    expect(spy).toHaveBeenCalled();
+    expect(response.status).toBe("UP");
+    spy.mockRestore();
+  });
+  test("should set status to DOWN if it's greater than 399", () => {
+    const response = new Response();
+    const spy = jest.spyOn(response, "status", "set");
+    response.status = 400;
+    expect(spy).toHaveBeenCalled();
+    expect(response.status).toBe("DOWN");
+    spy.mockRestore();
+  });
+});
+
 describe("get statusCode", () => {
   test("should return statusCode", () => {
     const response = new Response();
