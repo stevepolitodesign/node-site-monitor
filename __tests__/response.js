@@ -11,7 +11,7 @@ describe("Response class", () => {
     });
 
     it("should return a status code", async () => {
-      const scope = nock("http://www.google.com")
+      nock("http://www.google.com")
         .get("/")
         .reply(200);
       const response = new Response("http://www.google.com");
@@ -21,8 +21,17 @@ describe("Response class", () => {
   });
 
   describe("handleResponse", () => {
-    test.todo("should call getResponse once");
+    it("should call getResponse once", () => {
+      const response = new Response("http://www.google.com", [
+        "email@example.com"
+      ]);
+      const spy = jest.spyOn(response, "getResponse");
+      response.handleResponse();
+      expect(spy).toHaveBeenCalledTimes(1);
+      spy.mockRestore();
+    });
     test.todo("should call updateData once");
+    test.todo("should call updateData with specific arguments");
     test.todo(
       "should return the response if no email was passed to Response class"
     );
